@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- Import Vega & Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
+  
+    <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+
+</head>
+<body style="background-color: #FFFF  ;">
+  <div class="main-container">
+      <h1>Global Renewable Energy Usage</h1>
+  
+     <!-- Choropleth Globe Map -->
+    <div class="chart-container">
+      <div class="chart-title-box">
+        <div class="chart-title"></div>
+        <h4>Renewable Energy Share from total energy consumption in 2020 (%)</h4>
+      </div>
+    <p class="body">
+    </p>
+     <div id="choropleth_map" ></div>
+    </div> 
+
+  
+    <!-- Line Graph-->
+    <div class="chart-container">
+      <div class="chart-title-box">
+        <div class="chart-title"></div>
+        <h4>Total Renewable Energy Generated From 2000 to 2020</h4>
+      </div>
+      <p class="body">
+      </p>
+      <div id="line_chart_map"></div>
+    </div>
+    <h5>By Shawn Wang 30374669</h5>
+      <br></br>
+    
+  
+  <script type="text/javascript">
+    var spec2 = "js/choropleth.vg.json";
+    vegaEmbed('#choropleth_map', spec2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var spec2 = "js/line_chart.vg.json";
+    vegaEmbed('#line_chart_map', spec2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+  </script>
+</body>
+</html>
