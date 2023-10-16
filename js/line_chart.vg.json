@@ -4,7 +4,7 @@
   "data": {
     "url": "https://raw.githubusercontent.com/30374669/FIT3179A2/main/data/file_top10.csv"
   },
-  "width": 800,
+  "width": 1000,
   "height": 600,
   "encoding": {
     "x": {"field": "Year", "type": "nominal"},
