@@ -2,12 +2,12 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Stock prices of 5 Tech Companies over Time, with a point marker on hover. Note that the hidden markers are intentionally bigger to make it easier for readers to hover.",
   "data": {
-    "url": "https://raw.githubusercontent.com/30374669/FIT3179/main/sustainable-energy.csv"
+    "url": "https://raw.githubusercontent.com/30374669/FIT3179A2/main/data/file_top10.csv"
   },
   "width": 800,
   "height": 600,
   "encoding": {
-    "x": {"field": "Year", "type": "temporal"},
+    "x": {"field": "Year", "type": "nominal"},
     "y": {"field": "Electricity from renewables (TWh)", "type": "quantitative"},
     "color": {"field": "Entity", "type": "nominal"}
   },

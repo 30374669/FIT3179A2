@@ -1,0 +1,352 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 400,
+  "height": 200,
+  "padding": {"left": 20, "right": 5, "top": 20, "bottom": 0},
+  "autosize": "pad",
+  "signals": [
+    {"name": "strokeWidth", "value": 4},
+    {"name": "color", "value": "both"}
+  ],
+  "data": [
+    {
+      "name": "table",
+      "url": "https://raw.githubusercontent.com/30374669/FIT3179A2/main/data/file_top10_2019.csv",
+      "format": {"type": "csv", "delimiter": ","}
+    }
+  ],
+  "scales": [
+    {
+      "name": "size",
+      "type": "linear",
+      "domain": {
+        "data": "table",
+        "fields": ["Value_co2_emissions_kt_by_country"]
+      },
+      "range": [1000, 30000]
+    },
+    {
+      "name": "color",
+      "type": "sequential",
+      "domain": {"data": "table", "field": "Value_co2_emissions_kt_by_country"},
+      "range": ["#cef3ff", "#8acbec", "#009edf", "#0074ca", "#0047ab"]
+    },
+    {
+      "name": "text",
+      "type": "ordinal",
+      "domain": {"data": "table", "field": "Entity"}
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "size": "size",
+      "clipHeight": 20,
+      "title": "Carbon Monoxide Index",
+      "encode": {
+        "symbols": {"name": "legendSymbol"},
+        "labels": {"name": "legendLabel", "text": {"field": "value"}}
+      },
+      "orient": "top-right",
+      "titlePadding": 10,
+      "offset": -100
+    }
+  ],
+  "marks": [
+    {
+      "type": "symbol",
+      "name": "bubble",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "x": {"field": "x"},
+          "y": {"field": "y"},
+          "tooltip": {
+            "signal": "{'Country': datum.Entity, 'Carbon Monoxide Level': datum.Value_co2_emissions_kt_by_country}"
+          }
+        },
+        "update": {
+          "size": {
+            "field": "Value_co2_emissions_kt_by_country",
+            "scale": "size"
+          },
+          "fill": {
+            "field": "Value_co2_emissions_kt_by_country",
+            "scale": "color"
+          },
+          "strokeWidth": {"value": 1}
+        }
+      },
+      "transform": [
+        {
+          "type": "force",
+          "static": true,
+          "forces": [
+            {"force": "collide", "radius": {"expr": "sqrt(datum.size) / 2"}}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 154},
+          "y": {"value": -10},
+          "fontSize": {"value": 16},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "India"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 155},
+          "y": {"value": 10},
+          "fontSize": {"value": 12},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "2456300.049"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 12},
+          "y": {"value": -85},
+          "fontSize": {"value": 25},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "China"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 12},
+          "y": {"value": -60},
+          "fontSize": {"value": 16},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "10707219.73"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": -120},
+          "y": {"value": 70},
+          "fontSize": {"value": 16},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "United States"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": -120},
+          "y": {"value": 90},
+          "fontSize": {"value": 12},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "4817720.215"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": -10},
+          "y": {"value": 140},
+          "fontSize": {"value": 12},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "Japan"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": -10},
+          "y": {"value": 155},
+          "fontSize": {"value": 10},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "1081569.946"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 111},
+          "y": {"value": 110},
+          "fontSize": {"value": 12},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "Brazil"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 111},
+          "y": {"value": 121},
+          "fontSize": {"value": 8},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "434299.9878"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 50},
+          "y": {"value": 100},
+          "fontSize": {"value": 10},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "France"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 50},
+          "y": {"value": 110},
+          "fontSize": {"value": 8},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "300519.989"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 85},
+          "y": {"value": 47},
+          "fontSize": {"value": 10},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "United Kingdom"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 85},
+          "y": {"value": 58},
+          "fontSize": {"value": 8},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "348920.0134"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 1},
+          "y": {"value": 65},
+          "fontSize": {"value": 10},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "Canada"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": 2},
+          "y": {"value": 76},
+          "fontSize": {"value": 8},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "580210.022"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": -158},
+          "y": {"value": -35},
+          "fontSize": {"value": 10},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "Germany"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": -158},
+          "y": {"value": -23},
+          "fontSize": {"value": 8},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "657400.0244"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": -125},
+          "y": {"value": -75},
+          "fontSize": {"value": 10},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "Norway"}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "encode": {
+        "enter": {
+          "x": {"offset": -125},
+          "y": {"value": -65},
+          "fontSize": {"value": 8},
+          "align": {"value": "center"},
+          "fill": {"value": "black"},
+          "text": {"value": "35950.00076"}
+        }
+      }
+    }
+  ],
+  "config": {}
+}
